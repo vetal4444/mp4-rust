@@ -626,7 +626,7 @@ impl Mp4Track {
 
 // TODO creation_time, modification_time
 #[derive(Debug, Default)]
-pub(crate) struct Mp4TrackWriter {
+pub struct Mp4TrackWriter {
     trak: TrakBox,
 
     sample_id: u32,
@@ -641,7 +641,7 @@ pub(crate) struct Mp4TrackWriter {
 }
 
 impl Mp4TrackWriter {
-    pub(crate) fn new(track_id: u32, config: &TrackConfig) -> Result<Self> {
+    pub fn new(track_id: u32, config: &TrackConfig) -> Result<Self> {
         let mut trak = TrakBox::default();
         trak.tkhd.track_id = track_id;
         trak.mdia.mdhd.timescale = config.timescale;
@@ -817,7 +817,7 @@ impl Mp4TrackWriter {
         }
     }
 
-    pub(crate) fn write_sample<W: Write + Seek>(
+    pub fn write_sample<W: Write + Seek>(
         &mut self,
         writer: &mut W,
         sample: &Mp4Sample,
@@ -896,7 +896,7 @@ impl Mp4TrackWriter {
         }
     }
 
-    pub(crate) fn write_end<W: Write + Seek>(&mut self, writer: &mut W) -> Result<TrakBox> {
+    pub fn write_end<W: Write + Seek>(&mut self, writer: &mut W) -> Result<TrakBox> {
         self.write_chunk(writer)?;
 
         let max_sample_size = self.max_sample_size();

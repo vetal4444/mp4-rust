@@ -117,7 +117,7 @@ pub use emsg::EmsgBox;
 pub use ftyp::FtypBox;
 pub use hdlr::HdlrBox;
 pub use hev1::Hev1Box;
-pub use ilst::IlstBox;
+pub use ilst::{IlstBox, IlstItemBox};
 pub use mdhd::MdhdBox;
 pub use mdia::MdiaBox;
 pub use mehd::MehdBox;
