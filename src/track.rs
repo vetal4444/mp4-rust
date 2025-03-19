@@ -100,7 +100,7 @@ pub struct Mp4Track {
 }
 
 impl Mp4Track {
-    pub(crate) fn from(trak: &TrakBox) -> Self {
+    pub fn from(trak: &TrakBox) -> Self {
         let trak = trak.clone();
         Self {
             trak,
